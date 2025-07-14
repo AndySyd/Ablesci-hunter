@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 from urllib.parse import quote
 
 urls = []
@@ -21,6 +22,7 @@ def lets_hunt(url):
                 print(url)
                 print('积分',int(points_match[0]))
                 name = re.findall(r'<a data-clipboard-text="(.*?)" href', li_content)
+                os.system(f'echo {name[0]}| clip')
                 if 'Elsevier' in li_content:
                     print(name[0])
                     print(str('https://www.sciencedirect.com/search?qs='+quote(name[0])))
